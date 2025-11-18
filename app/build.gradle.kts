@@ -74,6 +74,10 @@ dependencies {
 
     // Imagenes
     implementation("io.coil-kt:coil-compose:2.4.0")
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+    implementation(libs.androidx.activity)
+    implementation(libs.androidx.constraintlayout)
 
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
