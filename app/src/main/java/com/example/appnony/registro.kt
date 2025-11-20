@@ -41,20 +41,23 @@ class registro : AppCompatActivity() {
 
         googleClient = GoogleSignIn.getClient(this, googleConf)
 
-        // CLICK EN GOOGLE
+
         btnGoogle.setOnClickListener {
             val intent = googleClient.signInIntent
             startActivityForResult(intent, GOOGLE_REQUEST)
+            val googleText = btnGoogle.getChildAt(0) as TextView
+            googleText.text = "Continuar con Google"
+            googleText.textSize = 16f
+            googleText.setPadding(0, 0, 0, 0)
+            googleText.textAlignment = TextView.TEXT_ALIGNMENT_CENTER
         }
 
-        // CLICK EN FACEBOOK (Aún no configurado)
+
         btnFacebook.setOnClickListener {
             Toast.makeText(this, "Facebook aún no está configurado.", Toast.LENGTH_SHORT).show()
         }
 
-        // ----------------------------------------
-        // ⭐ BOTÓN REGISTRARSE (Validación básica)
-        // ----------------------------------------
+
         btnRegistrar.setOnClickListener {
             if (
                 nombre.text.isEmpty() ||
