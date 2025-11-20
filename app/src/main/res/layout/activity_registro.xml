@@ -16,42 +16,47 @@
 
         <ImageView
             android:id="@+id/logoImage"
-            android:layout_width="169dp"
-            android:layout_height="97dp"
+            android:layout_width="117dp"
+            android:layout_height="66dp"
             android:layout_marginTop="20dp"
             android:scaleType="fitCenter"
             android:src="@drawable/logo" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="110dp"
             android:layout_height="wrap_content"
-            android:text="REGISTRO"
-            android:textSize="26sp"
-            android:textStyle="bold"
             android:layout_marginTop="25dp"
-            android:textColor="@android:color/black" />
+            android:text="REGISTRO"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
             android:text="Nombre * :"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:gravity="start"
+            android:textAlignment="viewStart"
+            android:layout_marginTop="18dp"/>
 
         <EditText
             android:id="@+id/etNombre"
             android:layout_width="280dp"
             android:layout_height="45dp"
             android:background="@android:drawable/edit_text"
-            android:padding="10dp" />
+            android:padding="10dp"
+            android:layout_gravity="start" />
 
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Apellido(s)*:"
             android:textSize="15sp"
+            android:gravity="start"
+            android:textAlignment="viewStart"
             android:layout_marginTop="12dp" />
 
         <EditText
@@ -59,11 +64,12 @@
             android:layout_width="280dp"
             android:layout_height="45dp"
             android:background="@android:drawable/edit_text"
-            android:padding="10dp" />
+            android:padding="10dp"
+            android:layout_gravity="start" />
 
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Número Telefónico * :"
             android:textSize="15sp"
@@ -75,11 +81,12 @@
             android:layout_height="45dp"
             android:inputType="phone"
             android:background="@android:drawable/edit_text"
-            android:padding="10dp" />
+            android:padding="10dp"
+            android:layout_gravity="start" />
 
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Correo electrónico*:"
             android:textSize="15sp"
@@ -91,11 +98,12 @@
             android:layout_height="45dp"
             android:inputType="textEmailAddress"
             android:background="@android:drawable/edit_text"
-            android:padding="10dp" />
+            android:padding="10dp"
+            android:layout_gravity="start" />
 
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Contraseña * :"
             android:textSize="15sp"
@@ -107,11 +115,12 @@
             android:layout_height="45dp"
             android:inputType="textPassword"
             android:background="@android:drawable/edit_text"
-            android:padding="10dp" />
+            android:padding="10dp"
+            android:layout_gravity="start" />
 
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Código Postal *:"
             android:textSize="15sp"
@@ -123,7 +132,8 @@
             android:layout_height="45dp"
             android:inputType="number"
             android:background="@android:drawable/edit_text"
-            android:padding="10dp" />
+            android:padding="10dp"
+            android:layout_gravity="start" />
 
 
         <Button
@@ -137,25 +147,74 @@
             android:textAllCaps="true" />
 
 
-        <com.google.android.gms.common.SignInButton
+        <LinearLayout
             android:id="@+id/btnGoogle"
             android:layout_width="250dp"
             android:layout_height="48dp"
             android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="#FFFFFF"
+            android:elevation="2dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:clickable="true"
+            android:focusable="true"
             android:layout_gravity="center"
-            android:theme="@style/ThemeOverlay.AppCompat.Light" />
+            android:backgroundTintMode="src_in">
+
+            <ImageView
+                android:id="@+id/imgGoogleLogo"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_google_logo"
+                android:contentDescription="Google logo"
+                android:layout_marginEnd="10dp"/>
+
+            <TextView
+                android:id="@+id/tvGoogleText"
+                android:layout_width="171dp"
+                android:layout_height="wrap_content"
+                android:text="Continuar con Google"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="15sp" />
+
+        </LinearLayout>
 
 
 
-        <Button
+        <LinearLayout
             android:id="@+id/btnFacebook"
             android:layout_width="250dp"
             android:layout_height="48dp"
             android:layout_marginTop="12dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
             android:background="#1877F2"
-            android:text="Continuar con Facebook"
-            android:textColor="#FFFFFF"
-            android:textAllCaps="false" />
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/imgFbLogo"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/facebook_logo"
+                android:contentDescription="Facebook logo"
+                android:layout_marginEnd="10dp"/>
+
+            <TextView
+                android:id="@+id/tvFbText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Continuar con Facebook"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:textAllCaps="false" />
+
+        </LinearLayout>
 
 
         <TextView
