@@ -22,22 +22,25 @@
             android:scaleType="fitCenter"
             android:src="@drawable/logo" />
 
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="REGISTRO"
-            android:textSize="26sp"
-            android:textStyle="bold"
             android:layout_marginTop="25dp"
-            android:textColor="@android:color/black" />
-
+            android:fontFamily="sans-serif-black"
+            android:text="REGISTRO"
+            android:letterSpacing=".2"
+            android:textColor="@android:color/black"
+            android:textSize="26sp"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:fontFamily="sans-serif-medium"
             android:text="Nombre * :"
-            android:textSize="15sp"
-            android:layout_marginTop="18dp" />
+            android:textSize="15sp" />
 
         <EditText
             android:id="@+id/etNombre"
@@ -50,9 +53,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="sans-serif-medium"
             android:text="Apellido(s)*:"
-            android:textSize="15sp"
-            android:layout_marginTop="12dp" />
+            android:textSize="15sp" />
 
         <EditText
             android:id="@+id/etApellidos"
@@ -65,9 +69,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/roboto_medium"
             android:text="Número Telefónico * :"
-            android:textSize="15sp"
-            android:layout_marginTop="12dp" />
+            android:textSize="15sp" />
 
         <EditText
             android:id="@+id/etTelefono"
@@ -81,9 +86,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="sans-serif-medium"
             android:text="Correo electrónico*:"
-            android:textSize="15sp"
-            android:layout_marginTop="12dp" />
+            android:textSize="15sp" />
 
         <EditText
             android:id="@+id/etCorreo"
@@ -97,9 +103,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="sans-serif-medium"
             android:text="Contraseña * :"
-            android:textSize="15sp"
-            android:layout_marginTop="12dp" />
+            android:textSize="15sp" />
 
         <EditText
             android:id="@+id/etContrasena"
@@ -113,9 +120,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="sans-serif-medium"
             android:text="Código Postal *:"
-            android:textSize="15sp"
-            android:layout_marginTop="12dp" />
+            android:textSize="15sp" />
 
         <EditText
             android:id="@+id/etCodigoPostal"
@@ -131,28 +139,88 @@
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_marginTop="25dp"
-            android:text="REGISTRARSE"
-            android:textColor="@android:color/white"
             android:background="#000000"
-            android:textAllCaps="true" />
+            android:fontFamily="sans-serif-black"
+            android:text="REGISTRARSE"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white" />
 
 
-        <com.google.android.gms.common.SignInButton
-            android:id="@+id/btnGoogle"
-            android:layout_width="250dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="20dp" />
+        <!-- faceboooook -->
 
 
-        <Button
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="12dp" />
+
+        <LinearLayout
             android:id="@+id/btnFacebook"
             android:layout_width="250dp"
             android:layout_height="48dp"
-            android:layout_marginTop="12dp"
             android:background="#1877F2"
-            android:text="Continuar con Facebook"
-            android:textColor="#FFFFFF"
-            android:textAllCaps="false" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/view"
+            app:layout_constraintVertical_bias="0.84">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/logofb"
+                />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:text="Iniciar con Facebook"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="12dp" />
+        <LinearLayout
+            android:id="@+id/btnGoogle"
+            android:layout_width="250dp"
+            android:layout_height="48dp"
+            android:background="@drawable/borde_input"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/view"
+            app:layout_constraintVertical_bias="0.934">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="12dp"
+                android:src="@drawable/logog" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Iniciar con Google"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
 
 
         <TextView
