@@ -4,19 +4,14 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import com.example.appnony.R
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -46,7 +41,7 @@ fun NotificacionesScreen(navController: NavHostController) {
                 id = 1,
                 titulo = "¡Nuevo descuento disponible!",
                 mensaje = "Tenemos un 30% en toda la colección de invierno.",
-                imagen = R.drawable.promo1
+                imagen = R.drawable.popularpromo1
             ),
             Notificacion(
                 id = 2,
@@ -57,7 +52,7 @@ fun NotificacionesScreen(navController: NavHostController) {
                 id = 3,
                 titulo = "Sugerencias para ti",
                 mensaje = "Basado en tus favoritos, te recomendamos nuevos productos.",
-                imagen = R.drawable.promo2
+                imagen = R.drawable.popularpromo2
             )
         )
     }

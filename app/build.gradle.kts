@@ -50,29 +50,29 @@ dependencies {
 
     implementation("com.google.android.gms:play-services-auth:21.0.0")
 
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
 
-    // Compose BOM
     implementation(platform(libs.androidx.compose.bom))
 
-    // Compose
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.foundation)
+    implementation(libs.androidx.compose.ui.text)
 
-    // Foundation (LazyVerticalGrid, clip, clickable…)
-    implementation("androidx.compose.foundation:foundation")
 
     // Navigation Compose
     implementation("androidx.navigation:navigation-compose:2.7.0")
 
-    // Coroutines (delay, isActive, etc.)
+    // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+
+    // Imagenes
     implementation("io.coil-kt:coil-compose:2.4.0")
+
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
@@ -87,3 +87,4 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 }
+

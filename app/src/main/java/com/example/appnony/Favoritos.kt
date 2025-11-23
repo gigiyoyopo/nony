@@ -19,7 +19,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import androidx.compose.foundation.layout.statusBarsPadding
 
 @Composable
 fun FavoritosScreen(
@@ -27,64 +26,47 @@ fun FavoritosScreen(
     productosList: List<ProductoSimple>
 ) {
 
-    val favoritosLive by remember {
-        derivedStateOf {
-            FavoritosState.getFavoritosList(productosList)
-        }
+    val favoritos by remember {
+        derivedStateOf { FavoritosState.getFavoritosList(productosList) }
     }
 
     Column(
-        modifier = Modifier
+        Modifier
             .fillMaxSize()
-            .statusBarsPadding()
-            .background(Color.White)
+            .background(Color(0xFFF7F7F7)) // fondo escala de grises de gigi
             .padding(16.dp)
     ) {
 
-        /* ----------------- REGRESAR + TÍTULO (IGUAL QUE PERFIL) ----------------- */
-
-        Row(
-            verticalAlignment = Alignment.CenterVertically
-        ) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
             IconButton(onClick = { navController.popBackStack() }) {
                 Icon(
-                    painter = painterResource(id = R.drawable.volver),
-                    contentDescription = "Regresar",
-                    tint = Color.Black
+                    painterResource(id = R.drawable.volver),
+                    contentDescription = null,
+                    tint = Color(0xFF333333)
                 )
             }
-
+            Spacer(Modifier.width(8.dp))
             Text(
-                text = "Favoritos",
+                "Favoritos",
                 fontSize = 22.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color.Black
+                color = Color(0xFF222222)
             )
         }
 
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(Modifier.height(20.dp))
 
-
-        /* ----------------- LISTA DE FAVORITOS ----------------- */
-
-        if (favoritosLive.isEmpty()) {
-
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center
-            ) {
+        if (favoritos.isEmpty()) {
+            Box(Modifier.fillMaxSize(), Alignment.Center) {
                 Text(
                     "Aún no tienes favoritos",
-                    fontSize = 16.sp,
-                    color = Color.Gray
+                    color = Color(0xFF555555)
                 )
             }
-
         } else {
 
             LazyColumn(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-
-                items(favoritosLive) { prod ->
+                items(favoritos) { prod ->
 
                     Card(
                         modifier = Modifier
@@ -95,60 +77,55 @@ fun FavoritosScreen(
                                     "producto/${prod.id}/${prod.nombre}/${prod.precio}/${prod.imagenRes}"
                                 )
                             },
+                        shape = RoundedCornerShape(14.dp),
                         colors = CardDefaults.cardColors(
-                            containerColor = Color(0xFFEDEDED)  // MÁS GRIS
+                            containerColor = Color(0xFFF0F0F0)
                         ),
-                        shape = RoundedCornerShape(12.dp)
+                        elevation = CardDefaults.cardElevation(3.dp)
                     ) {
 
                         Row(
-                            modifier = Modifier.fillMaxSize(),
+                            Modifier.fillMaxSize(),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
 
+                            // Imagen SIN desaturación
                             Image(
                                 painter = painterResource(id = prod.imagenRes),
-                                contentDescription = prod.nombre,
-                                contentScale = ContentScale.Crop,
+                                contentDescription = null,
                                 modifier = Modifier
                                     .size(100.dp)
                                     .padding(8.dp)
-                                    .clip(RoundedCornerShape(10.dp))
+                                    .clip(RoundedCornerShape(10.dp)),
+                                contentScale = ContentScale.Crop
                             )
 
-                            Column(
-                                modifier = Modifier.weight(1f)
-                            ) {
+                            Column(Modifier.weight(1f)) {
                                 Text(
                                     prod.nombre,
                                     fontSize = 16.sp,
                                     fontWeight = FontWeight.Bold,
-                                    color = Color.Black
+                                    color = Color(0xFF222222)
                                 )
                                 Text(
-                                    prod.precio,
+                                    "$${prod.precio}",
                                     fontSize = 14.sp,
-                                    color = Color.Black
+                                    color = Color(0xFF555555)
                                 )
                             }
 
-                            /* ❤️ ÍCONO DE CORAZÓN MÁS GRANDE */
-
                             Icon(
-                                painter = painterResource(
+                                painterResource(
                                     id = if (FavoritosState.isFavorite(prod.id))
                                         R.drawable.corazonrelleno
-                                    else
-                                        R.drawable.corazon
+                                    else R.drawable.corazon
                                 ),
-                                contentDescription = "Favorito",
-                                tint = Color.Red,
+                                contentDescription = null,
+                                tint = Color.Unspecified, // ✔ color original
                                 modifier = Modifier
-                                    .size(36.dp)      // <-- MÁS GRANDE
                                     .padding(12.dp)
-                                    .clickable {
-                                        FavoritosState.toggle(prod.id)
-                                    }
+                                    .size(32.dp)
+                                    .clickable { FavoritosState.toggle(prod.id) }
                             )
                         }
                     }
