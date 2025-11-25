@@ -1,104 +1,103 @@
 package com.example.appnony
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.*
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.tasks.Task
 
 class Registro : AppCompatActivity() {
 
-    private lateinit var googleClient: GoogleSignInClient
-    private val GOOGLE_REQUEST = 100
+    // ➡️ VARIABLES DE GOOGLE SIGN-IN
+    private val TAG = "GoogleSignInRegistro"
+    private val ID_CLIENTE_WEB = "412065217354-l1ue9621olcghpo81kjpsiven1l6tpr9.apps.googleusercontent.com"
+    private lateinit var mGoogleSignInClient: GoogleSignInClient
+    private lateinit var signInLauncher: ActivityResultLauncher<Intent>
+    // ⬅ FIN DE VARIABLES
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registro)
 
-        val nombre = findViewById<EditText>(R.id.etNombre)
-        val apellidos = findViewById<EditText>(R.id.etApellidos)
-        val telefono = findViewById<EditText>(R.id.etTelefono)
-        val correo = findViewById<EditText>(R.id.etCorreo)
-        val contrasena = findViewById<EditText>(R.id.etContrasena)
-        val codigoPostal = findViewById<EditText>(R.id.etCodigoPostal)
-
+        // Inicializaciones de la interfaz... (mantener aquí)
         val btnRegistrar = findViewById<Button>(R.id.btnRegistrarse)
         val tvIniciarSesion = findViewById<TextView>(R.id.tvIniciarSesion)
+        val signInButton: SignInButton = findViewById(R.id.sign_in_google_button_registro)
 
-        val btnGoogle = findViewById<LinearLayout>(R.id.btnGoogle)
-        val btnFacebook = findViewById<LinearLayout>(R.id.btnFacebook)
-
+        // Inicializaciones de Google Sign-In (como las teníamos)
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(ID_CLIENTE_WEB)
             .requestEmail()
             .build()
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
 
-        googleClient = GoogleSignIn.getClient(this, gso)
-
-        btnGoogle.post {
-            for (i in 0 until btnGoogle.childCount) {
-                val v = btnGoogle.getChildAt(i)
-                if (v is TextView) {
-                    v.text = "Continuar con Google"
-                    v.textSize = 15f
-                    v.textAlignment = TextView.TEXT_ALIGNMENT_CENTER
-                    break
-                }
-            }
+        signInLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
+            handleSignInResult(task)
         }
 
-        // GOOGLE CLICK
-        btnGoogle.setOnClickListener {
-            val intent = googleClient.signInIntent
-            startActivityForResult(intent, GOOGLE_REQUEST)
+        signInButton.setOnClickListener {
+            signIn()
         }
 
-        // FACEBOOK CLICK
-        btnFacebook.setOnClickListener {
-            Toast.makeText(this, "Login con Facebook (aún no configurado).", Toast.LENGTH_SHORT).show()
-        }
-
-        // 👉 REGISTRARSE → IR A INICIO
-        btnRegistrar.setOnClickListener {
-            if (
-                nombre.text.isEmpty() ||
-                apellidos.text.isEmpty() ||
-                telefono.text.isEmpty() ||
-                correo.text.isEmpty() ||
-                contrasena.text.isEmpty() ||
-                codigoPostal.text.isEmpty()
-            ) {
-                Toast.makeText(this, "Por favor, completa todos los campos.", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "Registro exitoso (simulado).", Toast.LENGTH_SHORT).show()
-
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                finish()
-            }
-        }
-
-        // 👉 TEXTO → IR A LOGIN
+        // ... Resto de tu lógica onCreate ...
         tvIniciarSesion.setOnClickListener {
             val intent = Intent(this, Login::class.java)
             startActivity(intent)
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
+    private fun signIn() {
+        val signInIntent = mGoogleSignInClient.signInIntent
+        signInLauncher.launch(signInIntent)
+    }
 
-        if (requestCode == GOOGLE_REQUEST) {
-            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-            try {
-                val account = task.getResult(ApiException::class.java)
-                val email = account?.email ?: "usuario"
-                Toast.makeText(this, "Bienvenido: $email", Toast.LENGTH_LONG).show()
-            } catch (e: ApiException) {
-                Toast.makeText(this, "Error al iniciar con Google", Toast.LENGTH_SHORT).show()
-            }
+    private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
+        try {
+            val account = completedTask.getResult(ApiException::class.java)
+
+
+            val nombreUsuario = account.displayName ?: "Usuario Google"
+            val correoUsuario = account.email ?: ""
+            val fotoPerfilUrl = account.photoUrl?.toString() ?: ""
+
+            // GUARDAMOS EN SHARED PREFERENCES
+            guardarDatosUsuario(nombreUsuario, correoUsuario, fotoPerfilUrl)
+
+            // Navegación a la pantalla principal
+            Log.d(TAG, "Registro con Google exitoso. Nombre: $nombreUsuario")
+            Toast.makeText(this, "Registro con Google exitoso. Bienvenido(a), $nombreUsuario", Toast.LENGTH_LONG).show()
+
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+
+        } catch (e: ApiException) {
+            Log.w(TAG, "Registro Google fallido. Código: " + e.statusCode)
+            Toast.makeText(this, "No se pudo registrar con Google. Error: ${e.statusCode}", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    // ------------------------------------------------------------------
+    // PARA KATTO SI
+    // ------------------------------------------------------------------
+    private fun guardarDatosUsuario(nombre: String, correo: String, fotoUrl: String) {
+        val prefs = getSharedPreferences("AUTH_PREFS", Context.MODE_PRIVATE)
+        with(prefs.edit()) {
+            putString("nombre_usuario", nombre)
+            putString("correo_usuario", correo)
+            putString("foto_url", fotoUrl)
+            apply()
         }
     }
 }
