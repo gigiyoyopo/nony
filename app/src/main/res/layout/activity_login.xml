@@ -145,6 +145,7 @@
         android:layout_width="match_parent"
         android:layout_height="12dp" />
 
+
     <LinearLayout
         android:id="@+id/btnFacebook"
         android:layout_width="250dp"
@@ -159,13 +160,12 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view"
-        app:layout_constraintVertical_bias="0.84">
+        app:layout_constraintVertical_bias="0.833">
 
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/logofb"
-             />
+            android:src="@drawable/logofb" />
 
         <TextView
             android:id="@+id/textView"
@@ -177,7 +177,6 @@
             android:textSize="16sp" />
 
     </LinearLayout>
-
 
     <LinearLayout
         android:id="@+id/btnGoogle"
