@@ -178,6 +178,7 @@
 
     </LinearLayout>
 
+    <!-- BOTÓN GOOGLE -->
     <LinearLayout
         android:id="@+id/btnGoogle"
         android:layout_width="250dp"
@@ -191,11 +192,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-
         app:layout_constraintTop_toBottomOf="@+id/btnFacebook"
-        app:layout_constraintVertical_bias="0.05" />
+        app:layout_constraintVertical_bias="0.439">
 
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="12dp"
+            android:src="@drawable/logog" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Continuar con Google"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,8 +16,8 @@
 
         <ImageView
             android:id="@+id/logoImage"
-            android:layout_width="117dp"
-            android:layout_height="66dp"
+            android:layout_width="135dp"
+            android:layout_height="74dp"
             android:layout_marginTop="20dp"
             android:scaleType="fitCenter"
             android:src="@drawable/logo" />
@@ -144,49 +144,50 @@
             android:padding="10dp" />
 
 
+
+        <!-- BOTÓN GOOGLE -->
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="12dp" />
+
         <Button
             android:id="@+id/btnRegistrarse"
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_marginTop="25dp"
-            android:text="REGISTRARSE"
-            android:textColor="@android:color/white"
+            android:layout_marginBottom="16dp"
             android:background="#000000"
-            android:textAllCaps="true" />
+            android:text="REGISTRARSE"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white" />
 
 
         <LinearLayout
             android:id="@+id/btnGoogle"
             android:layout_width="250dp"
             android:layout_height="48dp"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-
             android:background="@drawable/borde_input"
-            android:elevation="2dp"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:layout_gravity="center"
-            android:backgroundTintMode="src_in">
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
 
             <ImageView
-                android:id="@+id/imgGoogleLogo"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/logog"
-                android:contentDescription="Google logo"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="12dp"
+                android:src="@drawable/logog" />
 
-                android:layout_marginEnd="10dp"/>
-
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="12dp"
-
-            />
-
-
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Continuar con Google"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/btnFacebook"
