@@ -3,14 +3,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="24dp"
+<<<<<<< Updated upstream
     android:background="@android:color/white">
+=======
+    android:background="@android:color/white">  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+>>>>>>> Stashed changes
 
-    <LinearLayout
+    <ImageView
+        android:id="@+id/logoImage"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/logo" /> <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="REGISTRO"
+    android:textSize="24sp"
+    android:textStyle="bold"
+    android:textColor="@android:color/black"
+    android:layout_marginBottom="20dp"/>
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:text="Nombre * :"
+        android:textSize="15sp"
+        android:textColor="@android:color/black"/>
 
+<<<<<<< Updated upstream
 
         <ImageView
             android:id="@+id/logoImage"
@@ -29,8 +54,34 @@
             android:textStyle="bold"
             android:layout_marginTop="30dp"
             android:textColor="@android:color/black" />
+=======
+    <EditText
+        android:id="@+id/etNombre"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/borde_input"
+        android:paddingStart="10dp"
+        android:inputType="textPersonName"
+        android:layout_marginBottom="10dp"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Apellido(s)*:"
+        android:textSize="15sp"
+        android:textColor="@android:color/black"/>
+>>>>>>> Stashed changes
 
+    <EditText
+        android:id="@+id/etApellidos"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/borde_input"
+        android:paddingStart="10dp"
+        android:inputType="textPersonName"
+        android:layout_marginBottom="10dp"/>
+
+<<<<<<< Updated upstream
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -44,8 +95,32 @@
             android:layout_height="45dp"
             android:background="@android:drawable/edit_text"
             android:padding="10dp" />
+=======
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Número Telefónico * :"
+        android:textSize="15sp"
+        android:textColor="@android:color/black"/>
 
+    <EditText
+        android:id="@+id/etTelefono"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:inputType="phone"
+        android:background="@drawable/borde_input"
+        android:paddingStart="10dp"
+        android:layout_marginBottom="10dp"/>
+>>>>>>> Stashed changes
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Correo electrónico*:"
+        android:textSize="15sp"
+        android:textColor="@android:color/black"/>
+
+<<<<<<< Updated upstream
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -59,8 +134,34 @@
             android:layout_height="45dp"
             android:background="@android:drawable/edit_text"
             android:padding="10dp" />
+=======
+    <EditText
+        android:id="@+id/etCorreo"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:inputType="textEmailAddress"
+        android:background="@drawable/borde_input"
+        android:paddingStart="10dp"
+        android:layout_marginBottom="10dp"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Contraseña * :"
+        android:textSize="15sp"
+        android:textColor="@android:color/black"/>
+>>>>>>> Stashed changes
 
+    <EditText
+        android:id="@+id/etContrasena"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:inputType="textPassword"
+        android:background="@drawable/borde_input"
+        android:paddingStart="10dp"
+        android:layout_marginBottom="10dp"/>
+
+<<<<<<< Updated upstream
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -75,8 +176,34 @@
             android:inputType="phone"
             android:background="@android:drawable/edit_text"
             android:padding="10dp" />
+=======
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Código Postal *:"
+        android:textSize="15sp"
+        android:textColor="@android:color/black"/>
 
+    <EditText
+        android:id="@+id/etCodigoPostal"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:inputType="number"
+        android:background="@drawable/borde_input"
+        android:paddingStart="10dp"
+        android:layout_marginBottom="20dp"/>
+>>>>>>> Stashed changes
 
+    <Button
+        android:id="@+id/btnRegistrarse"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:text="REGISTRARSE"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@android:color/black"
+        android:layout_marginBottom="15dp"/>
+
+<<<<<<< Updated upstream
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -149,3 +276,18 @@
     </LinearLayout>
 
 </ScrollView>
+=======
+    <TextView
+        android:id="@+id/tvIniciarSesion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="¿Ya tienes una cuenta? Inicia Sesión."
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:textColor="#000000" />
+
+</LinearLayout>
+
+</ScrollView>
+>>>>>>> Stashed changes

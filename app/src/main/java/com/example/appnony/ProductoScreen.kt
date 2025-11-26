@@ -160,8 +160,20 @@ fun ProductoScreen(
             Text("Detalles del producto", fontWeight = FontWeight.Bold, fontSize = 16.sp, color = Color.Black)
             Spacer(Modifier.height(6.dp))
             Text(
+<<<<<<< Updated upstream:app/src/main/java/com/example/appnony/Producto.kt
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dignissim, metus a facilisis convallis, justo nulla tempor neque, vel ultricies sapien sapien ut nibh.",
                 color = Color.Black
+=======
+                "Detalles del com.example.appnony.producto:",
+                fontWeight = FontWeight.Bold,
+                fontSize = 16.sp,
+                color = Color(0xFF222222)
+            )
+
+            Text(
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                color = Color(0xFF666666)
+>>>>>>> Stashed changes:app/src/main/java/com/example/appnony/ProductoScreen.kt
             )
 
             Spacer(Modifier.height(20.dp))

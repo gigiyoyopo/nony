@@ -92,7 +92,7 @@ fun FavoritosScreen(
                             .height(120.dp)
                             .clickable {
                                 navController.navigate(
-                                    "producto/${prod.id}/${prod.nombre}/${prod.precio}/${prod.imagenRes}"
+                                    "com.example.appnony.producto/${prod.id}/${prod.nombre}/${prod.precio}/${prod.imagenRes}"
                                 )
                             },
                         colors = CardDefaults.cardColors(
