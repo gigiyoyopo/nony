@@ -16,148 +16,178 @@
 
         <ImageView
             android:id="@+id/logoImage"
-            android:layout_width="117dp"
-            android:layout_height="66dp"
+            android:layout_width="135dp"
+            android:layout_height="74dp"
             android:layout_marginTop="20dp"
             android:scaleType="fitCenter"
             android:src="@drawable/logo" />
 
+
         <TextView
-            android:layout_width="110dp"
+            android:layout_width="365dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
+            android:fontFamily="sans-serif-black"
+            android:letterSpacing=".2"
             android:text="REGISTRO"
             android:textColor="@android:color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
 
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nombre * :"
-            android:textSize="15sp"
+            android:layout_marginTop="18dp"
+            android:fontFamily="sans-serif-medium"
             android:gravity="start"
+            android:text="Nombre * :"
             android:textAlignment="viewStart"
-            android:layout_marginTop="18dp"/>
+            android:textSize="15sp" />
 
         <EditText
             android:id="@+id/etNombre"
-            android:layout_width="280dp"
+            android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:background="@android:drawable/edit_text"
-            android:padding="10dp"
-            android:layout_gravity="start" />
+            android:layout_gravity="start"
+            android:background="@drawable/borde_input"
+            android:padding="10dp" />
 
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Apellido(s)*:"
-            android:textSize="15sp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="sans-serif-medium"
             android:gravity="start"
+            android:text="Apellido(s)*:"
             android:textAlignment="viewStart"
-            android:layout_marginTop="12dp" />
+            android:textSize="15sp" />
 
         <EditText
             android:id="@+id/etApellidos"
-            android:layout_width="280dp"
+            android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:background="@android:drawable/edit_text"
-            android:padding="10dp"
-            android:layout_gravity="start" />
+            android:layout_gravity="start"
+            android:background="@drawable/borde_input"
+            android:padding="10dp" />
 
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="sans-serif-medium"
             android:text="Número Telefónico * :"
-            android:textSize="15sp"
-            android:layout_marginTop="12dp" />
+            android:textSize="15sp" />
 
         <EditText
             android:id="@+id/etTelefono"
-            android:layout_width="280dp"
+            android:layout_width="match_parent"
             android:layout_height="45dp"
+            android:layout_gravity="start"
+            android:background="@drawable/borde_input"
             android:inputType="phone"
-            android:background="@android:drawable/edit_text"
-            android:padding="10dp"
-            android:layout_gravity="start" />
+            android:padding="10dp" />
 
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="sans-serif-medium"
             android:text="Correo electrónico*:"
-            android:textSize="15sp"
-            android:layout_marginTop="12dp" />
+            android:textSize="15sp" />
 
         <EditText
             android:id="@+id/etCorreo"
-            android:layout_width="280dp"
+            android:layout_width="match_parent"
             android:layout_height="45dp"
+            android:layout_gravity="start"
+            android:background="@drawable/borde_input"
             android:inputType="textEmailAddress"
-            android:background="@android:drawable/edit_text"
-            android:padding="10dp"
-            android:layout_gravity="start" />
+            android:padding="10dp" />
 
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="sans-serif-medium"
             android:text="Contraseña * :"
-            android:textSize="15sp"
-            android:layout_marginTop="12dp" />
+            android:textSize="15sp" />
 
         <EditText
             android:id="@+id/etContrasena"
-            android:layout_width="280dp"
+            android:layout_width="match_parent"
             android:layout_height="45dp"
+            android:layout_gravity="start"
+            android:background="@drawable/borde_input"
             android:inputType="textPassword"
-            android:background="@android:drawable/edit_text"
-            android:padding="10dp"
-            android:layout_gravity="start" />
+            android:padding="10dp" />
 
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="sans-serif-medium"
             android:text="Código Postal *:"
-            android:textSize="15sp"
-            android:layout_marginTop="12dp" />
+            android:textSize="15sp" />
 
         <EditText
             android:id="@+id/etCodigoPostal"
-            android:layout_width="280dp"
+            android:layout_width="match_parent"
             android:layout_height="45dp"
+            android:layout_gravity="start"
+            android:background="@drawable/borde_input"
             android:inputType="number"
-            android:background="@android:drawable/edit_text"
-            android:padding="10dp"
-            android:layout_gravity="start" />
+            android:padding="10dp" />
 
+
+
+        <!-- BOTÓN GOOGLE -->
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="12dp" />
 
         <Button
             android:id="@+id/btnRegistrarse"
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_marginTop="25dp"
-            android:text="REGISTRARSE"
-            android:textColor="@android:color/white"
+            android:layout_marginBottom="16dp"
             android:background="#000000"
-            android:textAllCaps="true" />
+            android:text="REGISTRARSE"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white" />
 
 
-        <com.google.android.gms.common.SignInButton
-            android:id="@+id/sign_in_google_button_registro"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:id="@+id/btnGoogle"
+            android:layout_width="250dp"
+            android:layout_height="48dp"
+            android:background="@drawable/borde_input"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
 
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="12dp"
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="12dp"
+                android:src="@drawable/logog" />
 
-            />
-
-
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Continuar con Google"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/btnFacebook"
@@ -176,7 +206,7 @@
                 android:id="@+id/imgFbLogo"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@drawable/facebook_logo"
+                android:src="@drawable/logofb"
                 android:contentDescription="Facebook logo"
                 android:layout_marginEnd="10dp"/>
 
@@ -196,10 +226,11 @@
             android:id="@+id/tvIniciarSesion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="¿Ya tienes una cuenta? Inicia Sesión."
-            android:textSize="13sp"
             android:layout_marginTop="12dp"
-            android:textColor="#0000A0" />
+            android:fontFamily="sans-serif-medium"
+            android:text="¿Ya tienes una cuenta? Inicia Sesión."
+            android:textColor="#000000"
+            android:textSize="13sp" />
 
     </LinearLayout>
 
