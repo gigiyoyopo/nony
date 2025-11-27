@@ -87,11 +87,7 @@ fun AppNavigation() {
 
         // 📦 Producto
         composable(
-<<<<<<< Updated upstream
             route = "producto/{id}/{nombre}/{precio}/{imagenRes}"
-=======
-            "com.example.appnony.producto/{id}/{nombre}/{precio}/{imagenRes}"
->>>>>>> Stashed changes
         ) { backStackEntry ->
 
             val id = backStackEntry.arguments?.getString("id")?.toInt() ?: 0

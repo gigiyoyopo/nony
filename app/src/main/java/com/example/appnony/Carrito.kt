@@ -28,7 +28,7 @@ import androidx.navigation.NavHostController
 fun CarritoScreen(navController: NavHostController) {
     val productos by remember { derivedStateOf { CarritoState.items.values.toList() } }
     var subtotal by remember { mutableStateOf(CarritoState.getTotal()) }
-    var searchQuery by remember { mutableStateOf("") } // <-- ahora coincide con el OutlinedTextField
+    var searchQuery by remember { mutableStateOf("") }
 
     Column(
         modifier = Modifier
@@ -63,40 +63,36 @@ fun CarritoScreen(navController: NavHostController) {
                     Icon(
                         painterResource(id = R.drawable.lupa),
                         contentDescription = null,
-                        tint = Color.Black
+                        tint = Color.Black,
+                        modifier = Modifier.clickable {
+                            // Acción de búsqueda
+                        }
                     )
                 },
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = Color.Black,
-                    unfocusedBorderColor = Color.Black
+                    unfocusedBorderColor = Color.Black,
+                    cursorColor = Color.Black
                 )
             )
-
-            Spacer(modifier = Modifier.width(8.dp))
-
-            Box(
-                modifier = Modifier
-                    .size(44.dp)
-                    .background(Color(0xFFF3F3F3), RoundedCornerShape(8.dp))
-                    .clickable { /* TODO: filtros */ },
-                contentAlignment = Alignment.Center
-            ) {
-                Icon(
-                    painterResource(id = R.drawable.filtros),
-                    contentDescription = "Filtros",
-                    tint = Color.Black
-                )
-            }
         }
 
         Spacer(Modifier.height(16.dp))
 
         // ----------------- Título -----------------
-        Text("Carrito de Compra", fontWeight = FontWeight.Bold, fontSize = 22.sp, color = Color.Black)
+        Text(
+            "Carrito de Compra",
+            fontWeight = FontWeight.Bold,
+            fontSize = 22.sp,
+            color = Color.Black
+        )
         Spacer(Modifier.height(16.dp))
 
         // ----------------- Lista de Productos -----------------
-        LazyColumn(verticalArrangement = Arrangement.spacedBy(12.dp), modifier = Modifier.weight(1f)) {
+        LazyColumn(
+            verticalArrangement = Arrangement.spacedBy(12.dp),
+            modifier = Modifier.weight(1f)
+        ) {
             items(productos) { prod ->
                 Card(
                     shape = RoundedCornerShape(12.dp),
@@ -121,40 +117,67 @@ fun CarritoScreen(navController: NavHostController) {
                         // ----------------- Detalles del com.example.appnony.producto -----------------
                         Column(modifier = Modifier.weight(1f)) {
                             Row(verticalAlignment = Alignment.CenterVertically) {
-                                Text(prod.nombre, fontWeight = FontWeight.Bold, fontSize = 16.sp, color = Color.Black)
+                                Text(
+                                    prod.nombre,
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 16.sp,
+                                    color = Color.Black
+                                )
                                 Spacer(Modifier.width(8.dp))
-                                Text("Talla: ${prod.talla}", fontSize = 14.sp, color = Color.Black)
+                                Text(
+                                    "Talla: ${prod.talla}",
+                                    fontSize = 14.sp,
+                                    color = Color.Black
+                                )
                             }
                             Spacer(Modifier.height(4.dp))
                             Row(verticalAlignment = Alignment.CenterVertically) {
                                 Text(prod.precio, fontSize = 14.sp, color = Color.Black)
                                 Spacer(Modifier.width(16.dp))
-                                Text(prod.subtotal, fontSize = 14.sp, fontWeight = FontWeight.Bold, color = Color.Black)
+                                Text(
+                                    prod.subtotal,
+                                    fontSize = 14.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = Color.Black
+                                )
                             }
                         }
 
                         // ----------------- Contador y eliminar -----------------
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.spacedBy(4.dp)
+                            ) {
                                 Box(
                                     modifier = Modifier
                                         .size(36.dp)
                                         .clip(CircleShape)
                                         .background(Color.LightGray)
-                                        .clickable { CarritoState.updateCantidad("${prod.id}_${prod.talla}", prod.cantidad - 1) },
+                                        .clickable {
+                                            CarritoState.updateCantidad(
+                                                "${prod.id}_${prod.talla}",
+                                                prod.cantidad - 1
+                                            )
+                                        },
                                     contentAlignment = Alignment.Center
-                                ) { Text("-", fontWeight = FontWeight.Bold) }
+                                ) { Text("-", fontWeight = FontWeight.Bold, color = Color.Black) }
 
-                                Text("${prod.cantidad}", fontWeight = FontWeight.Bold, fontSize = 16.sp)
+                                Text("${prod.cantidad}", fontWeight = FontWeight.Bold, fontSize = 16.sp, color = Color.Black)
 
                                 Box(
                                     modifier = Modifier
                                         .size(36.dp)
                                         .clip(CircleShape)
                                         .background(Color.LightGray)
-                                        .clickable { CarritoState.updateCantidad("${prod.id}_${prod.talla}", prod.cantidad + 1) },
+                                        .clickable {
+                                            CarritoState.updateCantidad(
+                                                "${prod.id}_${prod.talla}",
+                                                prod.cantidad + 1
+                                            )
+                                        },
                                     contentAlignment = Alignment.Center
-                                ) { Text("+", fontWeight = FontWeight.Bold) }
+                                ) { Text("+", fontWeight = FontWeight.Bold, color = Color.Black) }
                             }
 
                             Spacer(Modifier.height(4.dp))
@@ -198,7 +221,14 @@ fun CarritoScreen(navController: NavHostController) {
         Spacer(Modifier.height(16.dp))
 
         Button(
-            onClick = { /* TODO: pago */ },
+            onClick = {
+                // Navegación segura a TicketScreen
+                try {
+                    navController.navigate("ticket")
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            },
             modifier = Modifier.fillMaxWidth(),
             colors = ButtonDefaults.buttonColors(containerColor = Color.Black)
         ) {
