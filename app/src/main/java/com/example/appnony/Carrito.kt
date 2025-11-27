@@ -114,7 +114,7 @@ fun CarritoScreen(navController: NavHostController) {
 
                         Spacer(Modifier.width(12.dp))
 
-                        // ----------------- Detalles del producto -----------------
+                        // ----------------- Detalles del com.example.appnony.producto -----------------
                         Column(modifier = Modifier.weight(1f)) {
                             Row(verticalAlignment = Alignment.CenterVertically) {
                                 Text(

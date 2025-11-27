@@ -1,4 +1,3 @@
-// --- MainActivity.kt ---
 package com.example.appnony
 
 import android.os.Bundle
@@ -20,7 +19,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             AppnonyTheme {
-                Surface(color = MaterialTheme.colorScheme.background) {
+                Surface(
+                    color = MaterialTheme.colorScheme.background
+                ) {
                     AppNavigation()
                 }
             }
@@ -31,7 +32,19 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun AppNavigation() {
 
-    val navController = rememberNavController()
+    val navController: NavHostController = rememberNavController()
+
+    // ⭐ LISTA GLOBAL DE PRODUCTOS
+    val productos = remember {
+        List(20) { index ->
+            ProductoSimple(
+                id = index,
+                nombre = "Producto ${index + 1}",
+                precio = "$${100 + index * 5}.00",
+                imagenRes = R.drawable.producto_placeholder
+            )
+        }
+    }
 
     NavHost(
         navController = navController,
@@ -40,7 +53,10 @@ fun AppNavigation() {
 
         // 🏠 Inicio
         composable("inicio") {
-            InicioScreen(navController = navController)
+            InicioScreen(
+                navController = navController,
+                productosList = productos              // <-- ahora se envía aquí
+            )
         }
 
         // 🛒 Carrito
@@ -48,14 +64,14 @@ fun AppNavigation() {
             CarritoScreen(navController = navController)
         }
 
-        composable("ticket") { TicketScreen(navController) }
-        composable("fin") { FinScreen(navController) }
-
-        // ❤️ Favoritos
+        // ❤️ Favoritos (Lista filtrada en tiempo real)
         composable("favoritos") {
+
+            val favoritos = FavoritosState.getFavoritosList(productos)
+
             FavoritosScreen(
                 navController = navController,
-                productosList = InicioData.productosGlobal
+                productosList = favoritos              // <-- favoritos listos
             )
         }
 
@@ -71,12 +87,12 @@ fun AppNavigation() {
 
         // 📦 Producto
         composable(
-            "producto/{id}/{nombre}/{precio}/{imagenRes}"
+            route = "producto/{id}/{nombre}/{precio}/{imagenRes}"
         ) { backStackEntry ->
 
             val id = backStackEntry.arguments?.getString("id")?.toInt() ?: 0
             val nombre = backStackEntry.arguments?.getString("nombre") ?: ""
-            val precio = backStackEntry.arguments?.getString("precio")?.toInt() ?: 0
+            val precio = backStackEntry.arguments?.getString("precio") ?: ""
             val imagenRes = backStackEntry.arguments?.getString("imagenRes")?.toInt() ?: 0
 
             ProductoScreen(
@@ -93,5 +109,7 @@ fun AppNavigation() {
 @Preview(showBackground = true)
 @Composable
 fun PreviewApp() {
-    AppnonyTheme { AppNavigation() }
+    AppnonyTheme {
+        AppNavigation()
+    }
 }
